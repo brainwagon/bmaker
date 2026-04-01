@@ -22,10 +22,10 @@
 - [x] Task: Update Persistence Logic (2480eb4)
     - [x] Write tests for saving/loading `fontPairId` from `localStorage`.
     - [x] Update `saveToLocalStorage` and `loadFromLocalStorage` in `js/app.js`.
-- [~] Task: Initial Load Handling
-    - [ ] Write tests for default font application when no state exists.
-    - [ ] Ensure `initApp` triggers the font injection on startup.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: State Management & Persistence' (Protocol in workflow.md)
+- [x] Task: Initial Load Handling (6cb6843)
+    - [x] Write tests for default font application when no state exists.
+    - [x] Ensure `initApp` triggers the font injection on startup.
+- [~] Task: Conductor - User Manual Verification 'Phase 3: State Management & Persistence' (Protocol in workflow.md)
 
 ## Phase 4: Integration & Layout Refinement
 - [ ] Task: Sync with Layout Engine
