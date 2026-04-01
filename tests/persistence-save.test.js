@@ -67,4 +67,16 @@ describe('Data Serialization & Storage', () => {
     expect(savedData.template).toBe('modern');
     expect(savedData.orientation).toBe('portrait');
   });
+
+  it('should save the current fontPairId', async () => {
+    const fontSelect = document.getElementById('font-select');
+    fontSelect.value = 'montserrat_merriweather';
+    fontSelect.dispatchEvent(new dom.window.Event('change'));
+
+    // Wait for debounce
+    await new Promise(resolve => setTimeout(resolve, 600));
+
+    const savedData = JSON.parse(global.localStorage.setItem.mock.calls[0][1]);
+    expect(savedData.fontPairId).toBe('montserrat_merriweather');
+  });
 });

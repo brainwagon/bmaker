@@ -90,6 +90,7 @@ export function initApp() {
                 phone: document.getElementById('input-phone')?.value,
                 website: document.getElementById('input-website')?.value,
                 template: templateSelect?.value,
+                fontPairId: fontSelect?.value,
                 orientation: businessCard?.classList.contains('landscape') ? 'landscape' : 'portrait',
                 qrEnabled: inputQrToggle?.checked,
                 logo: cardLogoDisplay?.querySelector('img')?.src
@@ -300,6 +301,12 @@ export function initApp() {
                 templateSelect.value = state.template;
                 businessCard.classList.remove('minimal', 'modern', 'elegant');
                 businessCard.classList.add(state.template);
+            }
+
+            if (state.fontPairId) {
+                fontSelect.value = state.fontPairId;
+                injectGoogleFonts(state.fontPairId);
+                applyFontPair(state.fontPairId);
             }
 
             if (state.orientation === 'portrait') {

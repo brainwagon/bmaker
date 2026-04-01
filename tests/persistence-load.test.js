@@ -22,7 +22,8 @@ describe('State Restoration', () => {
     website: 'restored.com',
     template: 'modern',
     orientation: 'portrait',
-    qrEnabled: true
+    qrEnabled: true,
+    fontPairId: 'montserrat_merriweather'
   };
 
   beforeEach(() => {
@@ -64,5 +65,13 @@ describe('State Restoration', () => {
     expect(document.getElementById('template-select').value).toBe(mockState.template);
     expect(document.getElementById('business-card').classList.contains('modern')).toBe(true);
     expect(document.getElementById('business-card').classList.contains('portrait')).toBe(true);
+  });
+
+  it('should restore the font selection on init', () => {
+    initApp();
+    
+    expect(document.getElementById('font-select').value).toBe(mockState.fontPairId);
+    // Montserrat is 'Montserrat', sans-serif
+    expect(document.getElementById('business-card').style.getPropertyValue('--heading-font')).toContain('Montserrat');
   });
 });
