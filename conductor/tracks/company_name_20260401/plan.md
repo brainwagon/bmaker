@@ -12,9 +12,9 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 1: UI Structure & Basic Logic' (Protocol in workflow.md) (2eebc17)
 
 ## Phase 2: Layout & Persistence
-- [ ] Task: Integrate with Layout Engine
-    - [ ] Write tests ensuring the company name scales down iteratively alongside the name and title.
-    - [ ] Update the `runLayoutEngine` function in `js/app.js` to include `#card-company-display` in the reset scaling and iterative reduction phases.
+- [x] Task: Integrate with Layout Engine (c328821)
+    - [x] Write tests ensuring the company name scales down iteratively alongside the name and title.
+    - [x] Update the `runLayoutEngine` function in `js/app.js` to include `#card-company-display` in the reset scaling and iterative reduction phases.
 - [ ] Task: Implement Persistence
     - [ ] Write tests for saving and loading the company name from `localStorage`.
     - [ ] Update `saveToLocalStorage` and `loadFromLocalStorage` in `js/app.js` to include the `company` field.
