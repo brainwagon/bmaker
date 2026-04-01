@@ -1,16 +1,16 @@
 # Implementation Plan: Build Core Business Card Generator MVP
 
-## Phase 1: Project Scaffolding & Basic UI
+## Phase 1: Project Scaffolding & Basic UI [checkpoint: 0802527]
 - [x] Task: Setup Basic HTML/CSS Structure (033a83b)
     - [x] Write tests for initial DOM structure and base styles
     - [x] Implement base HTML5 skeleton and Vanilla CSS reset/layout
 - [x] Task: Template Selection Component (103a4e0)
     - [x] Write tests for template switching logic
     - [x] Implement UI for selecting between landscape and portrait templates
-- [ ] Task: Conductor - User Manual Verification 'Phase 1: Project Scaffolding & Basic UI' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 1: Project Scaffolding & Basic UI' (Protocol in workflow.md)
 
 ## Phase 2: Card Editor & Customization
-- [ ] Task: Text Customization System
+- [~] Task: Text Customization System
     - [ ] Write tests for real-time sync between inputs and card preview
     - [ ] Implement live text editing for all professional fields
 - [ ] Task: Logo Upload & Placement
