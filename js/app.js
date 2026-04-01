@@ -347,7 +347,8 @@ export function initApp() {
         document.getElementById('input-email').value = state.email;
       }
       if (state.phone) {
-        document.getElementById('input-phone').value = state.phone;
+        const formatted = formatPhoneNumber(state.phone);
+        document.getElementById('input-phone').value = formatted;
       }
       if (state.website) {
         document.getElementById('input-website').value = state.website;
