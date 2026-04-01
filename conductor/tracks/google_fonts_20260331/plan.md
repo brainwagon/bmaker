@@ -9,14 +9,14 @@
     - [x] Add the `<select>` element to `index.html` within the editor section.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: UI & Data Mapping' (Protocol in workflow.md) (6bcc071)
 
-## Phase 2: Dynamic Loader Implementation
+## Phase 2: Dynamic Loader Implementation [checkpoint: 9e60230]
 - [x] Task: Implement Font Injection Utility (db133de)
     - [x] Write tests for the dynamic `<link>` tag generation and injection.
     - [x] Implement `injectGoogleFonts(pairId)` in `js/fonts.js`.
 - [x] Task: Apply Fonts to Preview (6d7c752)
     - [x] Write tests ensuring CSS variables or styles are updated correctly on selection.
     - [x] Implement the application logic to update Name/Title (Heading) and Contact Info (Body).
-- [~] Task: Conductor - User Manual Verification 'Phase 2: Dynamic Loader Implementation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Dynamic Loader Implementation' (Protocol in workflow.md) (9e60230)
 
 ## Phase 3: State Management & Persistence
 - [ ] Task: Update Persistence Logic
