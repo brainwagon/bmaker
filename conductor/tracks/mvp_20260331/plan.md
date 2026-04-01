@@ -13,10 +13,10 @@
 - [x] Task: Text Customization System (943f311)
     - [x] Write tests for real-time sync between inputs and card preview
     - [x] Implement live text editing for all professional fields
-- [~] Task: Logo Upload & Placement
-    - [ ] Write tests for client-side image loading and display
-    - [ ] Implement logo upload and basic positioning
-- [ ] Task: QR Code Integration
+- [x] Task: Logo Upload & Placement (f4df625)
+    - [x] Write tests for client-side image loading and display
+    - [x] Implement logo upload and basic positioning
+- [~] Task: QR Code Integration
     - [ ] Write tests for QR code data encoding and rendering
     - [ ] Integrate vanilla JS QR generator and add to card layout
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Card Editor & Customization' (Protocol in workflow.md)

@@ -62,4 +62,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // QR Code Integration
+    const inputQrToggle = document.getElementById('input-qr-toggle');
+    const cardQrDisplay = document.getElementById('card-qr-display');
+    const inputWebsite = document.getElementById('input-website');
+
+    function updateQRCode() {
+        const website = inputWebsite.value || 'https://example.com';
+        if (typeof qrcode !== 'undefined') {
+            const qr = qrcode(0, 'M');
+            qr.addData(website);
+            qr.make();
+            cardQrDisplay.innerHTML = qr.createImgTag(4);
+        }
+    }
+
+    if (inputQrToggle && cardQrDisplay) {
+        inputQrToggle.addEventListener('change', () => {
+            if (inputQrToggle.checked) {
+                cardQrDisplay.classList.add('active');
+                updateQRCode();
+            } else {
+                cardQrDisplay.classList.remove('active');
+            }
+        });
+    }
+
+    if (inputWebsite) {
+        inputWebsite.addEventListener('input', () => {
+            if (inputQrToggle.checked) {
+                updateQRCode();
+            }
+        });
+    }
 });

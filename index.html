@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Card Generator</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 </head>
 <body>
     <header>
@@ -36,6 +37,10 @@
                 <div class="input-group">
                     <label for="input-logo">Upload Logo</label>
                     <input type="file" id="input-logo" accept="image/*">
+                </div>
+                <div class="input-group-inline">
+                    <input type="checkbox" id="input-qr-toggle">
+                    <label for="input-qr-toggle">Include QR Code</label>
                 </div>
             </div>
 
@@ -69,6 +74,9 @@
                 <div id="business-card" class="landscape minimal">
                     <div id="card-logo-display" class="logo-container">
                         <!-- Logo will be displayed here -->
+                    </div>
+                    <div id="card-qr-display" class="qr-container">
+                        <!-- QR Code will be displayed here -->
                     </div>
                     <div class="card-content">
                         <div class="card-text">

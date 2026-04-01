@@ -106,6 +106,18 @@ select {
     border-radius: 4px;
 }
 
+.input-group-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.input-group-inline label {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
 #card-container {
     display: flex;
     justify-content: center;
@@ -139,6 +151,28 @@ select {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+.qr-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    padding: 2px;
+}
+
+.qr-container.active {
+    display: flex;
+}
+
+.qr-container img {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /* 3.5" x 2" at 96dpi (approx) */
