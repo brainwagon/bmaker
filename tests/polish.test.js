@@ -21,6 +21,21 @@ describe('Print & Final Polish', () => {
     global.document = document;
     global.window = dom.window;
     
+    // Polyfill localStorage
+    const localStorageMock = (() => {
+      let store = {};
+      return {
+        getItem: vi.fn(key => store[key] || null),
+        setItem: vi.fn((key, value) => {
+          store[key] = value.toString();
+        }),
+        clear: vi.fn(() => {
+          store = {};
+        })
+      };
+    })();
+    global.localStorage = localStorageMock;
+    
     // Mock window.print
     dom.window.print = vi.fn();
     

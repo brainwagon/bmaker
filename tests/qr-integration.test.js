@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { JSDOM } from 'jsdom';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -19,6 +19,22 @@ describe('QR Code Integration', () => {
     document = dom.window.document;
     
     global.document = document;
+    global.window = dom.window;
+
+    // Polyfill localStorage
+    const localStorageMock = (() => {
+      let store = {};
+      return {
+        getItem: vi.fn(key => store[key] || null),
+        setItem: vi.fn((key, value) => {
+          store[key] = value.toString();
+        }),
+        clear: vi.fn(() => {
+          store = {};
+        })
+      };
+    })();
+    global.localStorage = localStorageMock;
     
     // Mock qrcode-generator for JSDOM
     dom.window.qrcode = (typeNumber, errorCorrectionLevel) => ({

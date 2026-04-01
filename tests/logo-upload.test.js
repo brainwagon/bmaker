@@ -13,27 +13,43 @@ import { initApp } from '../js/app.js';
 describe('Logo Upload & Placement', () => {
   let dom;
   let document;
+beforeEach(() => {
+  dom = new JSDOM(html, { runScripts: "dangerously", resources: "usable" });
+  document = dom.window.document;
 
-  beforeEach(() => {
-    dom = new JSDOM(html, { runScripts: "dangerously", resources: "usable" });
-    document = dom.window.document;
-    
-    global.document = document;
-    
-    // Polyfill FileReader if necessary for tests
-    if (!dom.window.FileReader) {
-        dom.window.FileReader = class {
-            readAsDataURL(file) {
-                setTimeout(() => {
-                    this.onload({ target: { result: 'data:image/png;base64,mock' } });
-                }, 0);
-            }
-        };
-    }
-    global.FileReader = dom.window.FileReader;
+  global.document = document;
+  global.window = dom.window;
 
-    initApp();
-  });
+  // Polyfill localStorage
+  const localStorageMock = (() => {
+    let store = {};
+    return {
+      getItem: vi.fn(key => store[key] || null),
+      setItem: vi.fn((key, value) => {
+        store[key] = value.toString();
+      }),
+      clear: vi.fn(() => {
+        store = {};
+      })
+    };
+  })();
+  global.localStorage = localStorageMock;
+
+  // Polyfill FileReader if necessary for tests
+  if (!dom.window.FileReader) {
+      dom.window.FileReader = class {
+          readAsDataURL(file) {
+              setTimeout(() => {
+                  this.onload({ target: { result: 'data:image/png;base64,mock' } });
+              }, 0);
+          }
+      };
+  }
+  global.FileReader = dom.window.FileReader;
+
+  initApp();
+});
+
 
   it('should have a file input for logo upload', () => {
     expect(document.getElementById('input-logo')).not.toBeNull();
