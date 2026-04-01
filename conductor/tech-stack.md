@@ -5,6 +5,7 @@
 - **UI Strategy:** **Direct DOM Manipulation.** No heavy frameworks. Using native browser APIs to build the business card editor and preview system for maximum performance and simplicity.
 - **Templating:** Template strings and dynamic element creation to generate business card layouts and live previews.
 - **Layout Engine:** Custom geometric collision detection and iterative font-reduction system implemented in vanilla JavaScript to maintain visual integrity across different content lengths.
+- **Data Utilities:** Custom functional utilities for real-time data formatting and masking (e.g., US phone number formatting).
 
 ## Styling
 - **CSS Strategy:** **Vanilla CSS.** Standard CSS files for all UI and business card styling.
