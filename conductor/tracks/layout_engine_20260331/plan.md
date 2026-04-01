@@ -18,11 +18,11 @@
     - [x] Ensure scaling resets correctly when templates or orientations switch
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Auto-Scaling Engine' (Protocol in workflow.md)
 
-## Phase 3: Integration & Performance
+## Phase 3: Integration & Performance [checkpoint: 6d5518b]
 - [x] Task: Hook Engine into Live Preview (72d0a3d)
     - [x] Write integration tests for input-triggered scaling
     - [x] Refactor `js/app.js` to run the layout engine on every relevant DOM update
 - [x] Task: Performance Optimization & Polish (2bb8625)
     - [x] Write tests for execution speed and visual stability (no flickering)
     - [x] Implement debouncing or requestAnimationFrame optimization if needed
-- [ ] Task: Conductor - User Manual Verification 'Phase 3: Integration & Performance' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 3: Integration & Performance' (Protocol in workflow.md)
