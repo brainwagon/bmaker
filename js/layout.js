@@ -23,3 +23,29 @@ export function getAbsoluteBoundingRect(el) {
         y: rect.y + scrollTop
     };
 }
+
+/**
+ * Detects if two rectangles overlap.
+ * @param {Object} rect1 
+ * @param {Object} rect2 
+ * @returns {boolean}
+ */
+export function isOverlapping(rect1, rect2) {
+    return !(rect1.right < rect2.left || 
+             rect1.left > rect2.right || 
+             rect1.bottom < rect2.top || 
+             rect1.top > rect2.bottom);
+}
+
+/**
+ * Detects if a child rectangle overflows its parent.
+ * @param {Object} child 
+ * @param {Object} parent 
+ * @returns {boolean}
+ */
+export function isOverflowing(child, parent) {
+    return child.left < parent.left || 
+           child.right > parent.right || 
+           child.top < parent.top || 
+           child.bottom > parent.bottom;
+}
