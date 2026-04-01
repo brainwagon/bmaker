@@ -146,6 +146,7 @@ export function initApp() {
       const state = {
         name: document.getElementById('input-name')?.value,
         title: document.getElementById('input-title')?.value,
+        company: document.getElementById('input-company')?.value,
         email: document.getElementById('input-email')?.value,
         phone: document.getElementById('input-phone')?.value,
         website: document.getElementById('input-website')?.value,
@@ -357,6 +358,9 @@ export function initApp() {
       if (state.name) document.getElementById('input-name').value = state.name;
       if (state.title) {
         document.getElementById('input-title').value = state.title;
+      }
+      if (state.company) {
+        document.getElementById('input-company').value = state.company;
       }
       if (state.email) {
         document.getElementById('input-email').value = state.email;
