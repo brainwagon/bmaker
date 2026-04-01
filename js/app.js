@@ -13,6 +13,9 @@ export function initApp() {
     const inputLogo = document.getElementById('input-logo');
     const cardLogoDisplay = document.getElementById('card-logo-display');
 
+    // Initialize with default fonts
+    applyFontPair('default');
+
     const runLayoutEngine = (immediate = false) => {
         const performLayout = () => {
             if (!businessCard) return;

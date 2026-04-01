@@ -37,6 +37,7 @@ describe('Font Selection Integration', () => {
     vi.spyOn(fonts, 'injectGoogleFonts');
     vi.spyOn(fonts, 'applyFontPair');
     
+    vi.clearAllMocks();
     initApp();
   });
 
@@ -47,5 +48,10 @@ describe('Font Selection Integration', () => {
     
     expect(fonts.injectGoogleFonts).toHaveBeenCalledWith('montserrat_merriweather');
     expect(fonts.applyFontPair).toHaveBeenCalledWith('montserrat_merriweather');
+  });
+
+  it('should apply the default fonts on init when no state is present', () => {
+    // initApp is already called in beforeEach
+    expect(fonts.applyFontPair).toHaveBeenCalledWith('default');
   });
 });
