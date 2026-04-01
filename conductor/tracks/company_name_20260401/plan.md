@@ -11,11 +11,11 @@
     - [x] Update the `initApp` function in `js/app.js` to include the company name input in the reactive text update loop.
 - [x] Task: Conductor - User Manual Verification 'Phase 1: UI Structure & Basic Logic' (Protocol in workflow.md) (2eebc17)
 
-## Phase 2: Layout & Persistence
+## Phase 2: Layout & Persistence [checkpoint: 4e5fb42]
 - [x] Task: Integrate with Layout Engine (c328821)
     - [x] Write tests ensuring the company name scales down iteratively alongside the name and title.
     - [x] Update the `runLayoutEngine` function in `js/app.js` to include `#card-company-display` in the reset scaling and iterative reduction phases.
 - [x] Task: Implement Persistence (e879482)
     - [x] Write tests for saving and loading the company name from `localStorage`.
     - [x] Update `saveToLocalStorage` and `loadFromLocalStorage` in `js/app.js` to include the `company` field.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Layout & Persistence' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Layout & Persistence' (Protocol in workflow.md) (4e5fb42)
