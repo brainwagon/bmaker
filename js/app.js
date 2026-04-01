@@ -4,6 +4,7 @@ import {
   resetElementScaling,
 } from './layout.js';
 import {injectGoogleFonts, applyFontPair} from './fonts.js';
+import {formatPhoneNumber} from './phone-utils.js';
 
 /**
  * Initializes the business card generator application.
@@ -207,6 +208,9 @@ export function initApp() {
 
     if (inputEl && displayEl) {
       inputEl.addEventListener('input', () => {
+        if (inputPair.id === 'input-phone') {
+          inputEl.value = formatPhoneNumber(inputEl.value);
+        }
         displayEl.textContent = inputEl.value;
         runLayoutEngine();
         saveToLocalStorage();
