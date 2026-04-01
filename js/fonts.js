@@ -73,3 +73,26 @@ export const FONT_PAIRS = {
         googleFontsUrl: 'https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Work+Sans:wght@400&display=swap'
     }
 };
+
+/**
+ * Injects a Google Fonts link tag into the document head for the given font pair ID.
+ * @param {string} pairId - The ID of the font pair to inject.
+ */
+export function injectGoogleFonts(pairId) {
+    if (pairId === 'default' || !FONT_PAIRS[pairId]) {
+        return;
+    }
+
+    const pair = FONT_PAIRS[pairId];
+    const linkId = `google-fonts-${pairId}`;
+
+    if (document.getElementById(linkId)) {
+        return;
+    }
+
+    const link = document.createElement('link');
+    link.id = linkId;
+    link.rel = 'stylesheet';
+    link.href = pair.googleFontsUrl;
+    document.head.appendChild(link);
+}
