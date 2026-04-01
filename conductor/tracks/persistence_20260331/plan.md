@@ -13,7 +13,7 @@
 - [x] Task: Persist Uploaded Logo (a70e2fe)
     - [x] Write tests for base64 logo storage and retrieval
     - [x] Implement logo persistence and restoration
-- [~] Task: Persist QR Code State
-    - [ ] Write tests for QR toggle and data persistence
-    - [ ] Implement QR state restoration
+- [x] Task: Persist QR Code State (6c35251)
+    - [x] Write tests for QR toggle and data persistence
+    - [x] Implement QR state restoration
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Branding & QR Persistence' (Protocol in workflow.md)
