@@ -34,3 +34,6 @@
 - [x] Task: Visual Polish & Error Handling (f327032)
     - [x] Add loading indicators or graceful fallbacks for CDN failures.
 - [x] Task: Conductor - User Manual Verification 'Phase 4: Integration & Layout Refinement' (Protocol in workflow.md) (0d8142f)
+
+## Phase: Review Fixes
+- [x] Task: Apply review suggestions (7dc1424)
