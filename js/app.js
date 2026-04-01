@@ -134,6 +134,13 @@ export function initApp() {
             });
         });
     }
+
+    const btnPrint = document.getElementById('btn-print');
+    if (btnPrint) {
+        btnPrint.addEventListener('click', () => {
+            window.print();
+        });
+    }
 }
 
 // Auto-init if not in test environment

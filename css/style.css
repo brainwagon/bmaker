@@ -175,6 +175,58 @@ select {
     max-height: 100%;
 }
 
+/* Template Styles */
+#business-card.modern {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    border-left: 10px solid var(--accent-color);
+}
+
+#business-card.modern #card-name-display {
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#business-card.elegant {
+    font-family: 'Georgia', serif;
+    background: #fff;
+    border: 1px solid #d4af37; /* Gold */
+}
+
+#business-card.elegant .card-content {
+    border: 5px solid #f9f9f9;
+}
+
+#business-card.elegant #card-name-display {
+    color: #000;
+    font-weight: normal;
+    font-style: italic;
+    border-bottom: 1px solid #d4af37;
+    display: inline-block;
+}
+
+/* Print Styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #business-card, #business-card * {
+        visibility: visible;
+    }
+    #business-card {
+        position: absolute;
+        left: 0;
+        top: 0;
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+    /* Set page size to card size to avoid extra margins */
+    @page {
+        size: auto;
+        margin: 0;
+    }
+}
+
 /* 3.5" x 2" at 96dpi (approx) */
 #business-card.landscape {
     width: 336px;

@@ -22,10 +22,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Card Editor & Customization' (Protocol in workflow.md)
 
 ## Phase 3: Export & Polish
-- [~] Task: Export System (PNG & PDF)
-    - [ ] Write tests for export triggers and data conversion logic
-    - [ ] Implement PNG export and high-quality PDF generation
-- [ ] Task: Print & Final Polish
+- [x] Task: Export System (PNG & PDF) (f68912e)
+    - [x] Write tests for export triggers and data conversion logic
+    - [x] Implement PNG export and high-quality PDF generation
+- [~] Task: Print & Final Polish
     - [ ] Write tests for browser print integration
     - [ ] Implement direct print functionality and final UX refinements
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Export & Polish' (Protocol in workflow.md)
