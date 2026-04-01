@@ -267,12 +267,14 @@ select {
     font-size: 1.5rem;
     margin-bottom: 5px;
     color: var(--primary-color);
+    white-space: nowrap;
 }
 
 #card-title-display {
     font-size: 0.9rem;
     color: #666;
     margin-bottom: 15px;
+    white-space: nowrap;
 }
 
 .card-contact {

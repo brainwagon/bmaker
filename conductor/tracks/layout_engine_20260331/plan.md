@@ -13,9 +13,9 @@
 - [x] Task: Implement Iterative Reduction Algorithm (685219a)
     - [x] Write tests for font-size reduction logic until fit is achieved
     - [x] Implement the core scaling loop with min-size threshold (8px)
-- [~] Task: Orientation and Template Awareness
-    - [ ] Write tests for scaling behavior in both Landscape and Portrait modes
-    - [ ] Ensure scaling resets correctly when templates or orientations switch
+- [x] Task: Orientation and Template Awareness (0f52cdd)
+    - [x] Write tests for scaling behavior in both Landscape and Portrait modes
+    - [x] Ensure scaling resets correctly when templates or orientations switch
 - [ ] Task: Conductor - User Manual Verification 'Phase 2: Auto-Scaling Engine' (Protocol in workflow.md)
 
 ## Phase 3: Integration & Performance
