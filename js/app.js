@@ -197,6 +197,7 @@ export function initApp() {
   const inputs = [
     {id: 'input-name', displayId: 'card-name-display'},
     {id: 'input-title', displayId: 'card-title-display'},
+    {id: 'input-company', displayId: 'card-company-display'},
     {id: 'input-email', displayId: 'card-email-display'},
     {id: 'input-phone', displayId: 'card-phone-display'},
     {id: 'input-website', displayId: 'card-website-display'},
