@@ -11,28 +11,32 @@ export function initApp() {
     const inputLogo = document.getElementById('input-logo');
     const cardLogoDisplay = document.getElementById('card-logo-display');
 
+    let layoutTimeout;
     const runLayoutEngine = () => {
-        if (!businessCard) return;
-        
-        const containerRect = getAbsoluteBoundingRect(businessCard);
-        const avoidRects = [];
-        
-        if (cardLogoDisplay) avoidRects.push(getAbsoluteBoundingRect(cardLogoDisplay));
-        if (cardQrDisplay && cardQrDisplay.classList.contains('active')) {
-            avoidRects.push(getAbsoluteBoundingRect(cardQrDisplay));
-        }
-
-        const elementsToScale = [
-            document.getElementById('card-name-display'),
-            document.getElementById('card-title-display')
-        ];
-
-        elementsToScale.forEach(el => {
-            if (el) {
-                resetElementScaling(el);
-                autoScaleElement(el, containerRect, avoidRects);
+        clearTimeout(layoutTimeout);
+        layoutTimeout = setTimeout(() => {
+            if (!businessCard) return;
+            
+            const containerRect = getAbsoluteBoundingRect(businessCard);
+            const avoidRects = [];
+            
+            if (cardLogoDisplay) avoidRects.push(getAbsoluteBoundingRect(cardLogoDisplay));
+            if (cardQrDisplay && cardQrDisplay.classList.contains('active')) {
+                avoidRects.push(getAbsoluteBoundingRect(cardQrDisplay));
             }
-        });
+
+            const elementsToScale = [
+                document.getElementById('card-name-display'),
+                document.getElementById('card-title-display')
+            ];
+
+            elementsToScale.forEach(el => {
+                if (el) {
+                    resetElementScaling(el);
+                    autoScaleElement(el, containerRect, avoidRects);
+                }
+            });
+        }, 50); // Small debounce for stability
     };
 
     // Persistence Logic (moved up for scope)

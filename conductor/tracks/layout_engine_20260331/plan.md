@@ -19,10 +19,10 @@
 - [x] Task: Conductor - User Manual Verification 'Phase 2: Auto-Scaling Engine' (Protocol in workflow.md)
 
 ## Phase 3: Integration & Performance
-- [~] Task: Hook Engine into Live Preview
-    - [ ] Write integration tests for input-triggered scaling
-    - [ ] Refactor `js/app.js` to run the layout engine on every relevant DOM update
-- [ ] Task: Performance Optimization & Polish
+- [x] Task: Hook Engine into Live Preview (72d0a3d)
+    - [x] Write integration tests for input-triggered scaling
+    - [x] Refactor `js/app.js` to run the layout engine on every relevant DOM update
+- [~] Task: Performance Optimization & Polish
     - [ ] Write tests for execution speed and visual stability (no flickering)
     - [ ] Implement debouncing or requestAnimationFrame optimization if needed
 - [ ] Task: Conductor - User Manual Verification 'Phase 3: Integration & Performance' (Protocol in workflow.md)
