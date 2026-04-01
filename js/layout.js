@@ -49,3 +49,29 @@ export function isOverflowing(child, parent) {
            child.top < parent.top || 
            child.bottom > parent.bottom;
 }
+
+/**
+ * Iteratively reduces the font size of an element until it fits within a container 
+ * and does not overlap with specified target elements.
+ * @param {HTMLElement} el The element to scale
+ * @param {Object} containerRect Bounding rect of the parent container
+ * @param {Array<Object>} avoidRects Array of bounding rects to avoid overlapping
+ * @param {number} minFontSize Minimum allowed font size
+ */
+export function autoScaleElement(el, containerRect, avoidRects = [], minFontSize = 8) {
+    let currentFontSize = parseFloat(window.getComputedStyle(el).fontSize);
+    
+    const checkConstraints = () => {
+        const rect = getAbsoluteBoundingRect(el);
+        if (isOverflowing(rect, containerRect)) return true;
+        for (const avoid of avoidRects) {
+            if (isOverlapping(rect, avoid)) return true;
+        }
+        return false;
+    };
+
+    while (checkConstraints() && currentFontSize > minFontSize) {
+        currentFontSize -= 1;
+        el.style.fontSize = `${currentFontSize}px`;
+    }
+}
