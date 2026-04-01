@@ -17,6 +17,7 @@ To provide a simple, elegant, and efficient way for individual professionals to 
 3. **QR Code Generator:** Built-in tool to generate and place QR codes for personal websites, LinkedIn profiles, or digital contact info.
 4. **Interactive Editor:** A simple UI for real-time preview of the business card as users customize text and images.
 5. **Session Persistence:** Automatic saving of the editor state to local storage, ensuring user data and design choices are preserved between sessions.
+6. **Sophisticated Layout Engine:** Automated iterative font-scaling algorithm that prevents text collisions with Logo/QR elements and ensures all content fits perfectly within the card's vertical bounds.
 
 ## Export & Distribution
 - **PDF Export:** Generate high-quality, print-ready PDF documents.
