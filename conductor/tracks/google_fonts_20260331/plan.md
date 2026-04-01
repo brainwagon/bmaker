@@ -1,7 +1,7 @@
 # Implementation Plan: Google Font Pairs Integration
 
 ## Phase 1: UI & Data Mapping
-- [ ] Task: Map Font Pairs Data
+- [~] Task: Map Font Pairs Data
     - [ ] Create `js/fonts.js` containing the 10 font pair configurations (URLs and families).
     - [ ] Write unit tests to verify data structure integrity.
 - [ ] Task: Font Selection Dropdown
