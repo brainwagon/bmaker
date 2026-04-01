@@ -295,6 +295,12 @@ select {
   padding: 20px;
 }
 
+.card-text {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
 #card-name-display {
   color: var(--primary-color);
   display: inline-block;
