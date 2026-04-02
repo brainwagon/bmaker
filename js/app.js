@@ -109,11 +109,85 @@ export async function initApp() {
   /** Logo image data URL; populated on upload and restored from localStorage. */
   let currentLogoSrc = '';
 
+  /**
+   * Returns the current card data from form inputs.
+   * @returns {Object}
+   */
+  const collectData = () => ({
+    Name: document.getElementById('input-name')?.value || '',
+    Title: document.getElementById('input-title')?.value || '',
+    Company: document.getElementById('input-company')?.value || '',
+    Email: document.getElementById('input-email')?.value || '',
+    Phone: document.getElementById('input-phone')?.value || '',
+    Website: document.getElementById('input-website')?.value || '',
+    Logo: currentLogoSrc,
+  });
+
+  /**
+   * Regenerates the QR code image from the current website value.
+   * Shows or hides #card-qr-display based on whether a URL is present.
+   */
+  function updateQRCode() {
+    const qrEl = document.getElementById('card-qr-display');
+    if (!qrEl) return;
+    const website = document.getElementById('input-website')?.value || '';
+    if (!website) {
+      qrEl.style.display = 'none';
+      return;
+    }
+    qrEl.style.display = '';
+    if (typeof qrcode !== 'undefined') {
+      const qr = qrcode(0, 'M');
+      qr.addData(website);
+      qr.make();
+      qrEl.innerHTML = qr.createImgTag(4);
+    }
+  }
+
+  /**
+   * Syncs the logo preview area to match the current logo state and format.
+   * Reads the logo size from the current format's Logo item, if present.
+   */
+  const updateLogoPreview = () => {
+    if (!logoPreviewArea) return;
+    const logoItem = currentFormat?.items?.find((i) => i.field === 'Logo');
+    const size = logoItem?.size || '60px';
+    logoPreviewArea.style.width = size;
+    logoPreviewArea.style.height = size;
+    if (currentLogoSrc) {
+      if (logoPreviewImg) {
+        logoPreviewImg.src = currentLogoSrc;
+        logoPreviewImg.hidden = false;
+      }
+      if (logoPreviewPlaceholder) logoPreviewPlaceholder.hidden = true;
+      if (btnLogoRemove) btnLogoRemove.hidden = false;
+    } else {
+      if (logoPreviewImg) {
+        logoPreviewImg.src = '';
+        logoPreviewImg.hidden = true;
+      }
+      if (logoPreviewPlaceholder) logoPreviewPlaceholder.hidden = false;
+      if (btnLogoRemove) btnLogoRemove.hidden = true;
+    }
+  };
+
+  /**
+   * Wrapper for renderCard that also updates the QR code and logo preview.
+   */
+  const renderApp = (format, data) => {
+    if (businessCard && format) {
+      renderCard(businessCard, format, data, () => {
+        updateQRCode();
+        updateLogoPreview();
+      });
+    }
+  };
+
   // Synchronous initial render: ensures card field elements exist in DOM
   // immediately, so event-driven tests don't need to await initApp().
   if (businessCard) {
     currentFormat = FALLBACK_FORMAT;
-    renderCard(businessCard, FALLBACK_FORMAT, {});
+    renderApp(FALLBACK_FORMAT, {});
   }
 
   // ------------------------------------------------------------------
@@ -177,24 +251,6 @@ export async function initApp() {
   };
 
   // ------------------------------------------------------------------
-  // Data collection
-  // ------------------------------------------------------------------
-
-  /**
-   * Returns the current card data from form inputs.
-   * @returns {Object}
-   */
-  const collectData = () => ({
-    Name: document.getElementById('input-name')?.value || '',
-    Title: document.getElementById('input-title')?.value || '',
-    Company: document.getElementById('input-company')?.value || '',
-    Email: document.getElementById('input-email')?.value || '',
-    Phone: document.getElementById('input-phone')?.value || '',
-    Website: document.getElementById('input-website')?.value || '',
-    Logo: currentLogoSrc,
-  });
-
-  // ------------------------------------------------------------------
   // Format loading and rendering
   // ------------------------------------------------------------------
 
@@ -230,9 +286,7 @@ export async function initApp() {
       currentFormatText = text;
       currentFormatModified = res.headers.get('Last-Modified');
       currentFormat = parseFormat(text);
-      renderCard(businessCard, currentFormat, collectData());
-      updateQRCode();
-      updateLogoPreview();
+      renderApp(currentFormat, collectData());
       await loadAndApplyFont(currentFormat.metadata.fontPair);
       runLayoutEngine(true);
       startFormatWatcher(filename);
@@ -274,9 +328,7 @@ export async function initApp() {
         currentFormatText = text;
         currentFormatModified = newModified ?? modified;
         currentFormat = parseFormat(text);
-        renderCard(businessCard, currentFormat, collectData());
-        updateQRCode();
-        updateLogoPreview();
+        renderApp(currentFormat, collectData());
         runLayoutEngine(true);
       } catch (err) {
         console.warn(`Format watcher error for "${filename}":`, err);
@@ -406,33 +458,6 @@ export async function initApp() {
   // Logo upload
   // ------------------------------------------------------------------
 
-  /**
-   * Syncs the logo preview area to match the current logo state and format.
-   * Reads the logo size from the current format's Logo item, if present.
-   */
-  const updateLogoPreview = () => {
-    if (!logoPreviewArea) return;
-    const logoItem = currentFormat?.items?.find((i) => i.field === 'Logo');
-    const size = logoItem?.size || '60px';
-    logoPreviewArea.style.width = size;
-    logoPreviewArea.style.height = size;
-    if (currentLogoSrc) {
-      if (logoPreviewImg) {
-        logoPreviewImg.src = currentLogoSrc;
-        logoPreviewImg.hidden = false;
-      }
-      if (logoPreviewPlaceholder) logoPreviewPlaceholder.hidden = true;
-      if (btnLogoRemove) btnLogoRemove.hidden = false;
-    } else {
-      if (logoPreviewImg) {
-        logoPreviewImg.src = '';
-        logoPreviewImg.hidden = true;
-      }
-      if (logoPreviewPlaceholder) logoPreviewPlaceholder.hidden = false;
-      if (btnLogoRemove) btnLogoRemove.hidden = true;
-    }
-  };
-
   if (btnLogoUpload) {
     btnLogoUpload.addEventListener('click', () => inputLogo?.click());
   }
@@ -443,8 +468,7 @@ export async function initApp() {
       if (inputLogo) inputLogo.value = '';
       updateLogoPreview();
       if (businessCard && currentFormat) {
-        renderCard(businessCard, currentFormat, collectData());
-        updateQRCode();
+        renderApp(currentFormat, collectData());
       }
       runLayoutEngine(true);
       saveToLocalStorage(true);
@@ -460,8 +484,7 @@ export async function initApp() {
           currentLogoSrc = event.target.result;
           updateLogoPreview();
           if (businessCard && currentFormat) {
-            renderCard(businessCard, currentFormat, collectData());
-            updateQRCode();
+            renderApp(currentFormat, collectData());
           }
           runLayoutEngine(true);
           saveToLocalStorage(true);
@@ -474,27 +497,6 @@ export async function initApp() {
   // ------------------------------------------------------------------
   // QR code
   // ------------------------------------------------------------------
-
-  /**
-   * Regenerates the QR code image from the current website value.
-   * Shows or hides #card-qr-display based on whether a URL is present.
-   */
-  function updateQRCode() {
-    const qrEl = document.getElementById('card-qr-display');
-    if (!qrEl) return;
-    const website = inputWebsite?.value || '';
-    if (!website) {
-      qrEl.style.display = 'none';
-      return;
-    }
-    qrEl.style.display = '';
-    if (typeof qrcode !== 'undefined') {
-      const qr = qrcode(0, 'M');
-      qr.addData(website);
-      qr.make();
-      qrEl.innerHTML = qr.createImgTag(4);
-    }
-  }
 
   if (inputWebsite) {
     inputWebsite.addEventListener('input', () => {
@@ -636,9 +638,8 @@ export async function initApp() {
 
   // Re-render the fallback format now that currentLogoSrc is set.
   if (businessCard) {
-    renderCard(businessCard, FALLBACK_FORMAT, collectData());
+    renderApp(FALLBACK_FORMAT, collectData());
   }
-  updateLogoPreview();
 
   // 3. Populate format selector from manifest (async)
   await loadFormats();

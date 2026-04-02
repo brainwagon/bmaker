@@ -165,8 +165,9 @@ function createSegmentElement(seg, data) {
  * @param {HTMLElement} cardElement - the #business-card element
  * @param {Object} format - parsed format from parseFormat()
  * @param {Object} data - {Name, Title, Company, Email, Phone, Website, Logo}
+ * @param {Function} [onRender] - optional callback after DOM is built
  */
-export function renderCard(cardElement, format, data) {
+export function renderCard(cardElement, format, data, onRender) {
   const {metadata, segments} = format;
 
   // 1. Apply theme and orientation classes
@@ -202,4 +203,6 @@ export function renderCard(cardElement, format, data) {
   for (const seg of segments) {
     cardContent.appendChild(createSegmentElement(seg, data));
   }
+
+  if (onRender) onRender();
 }
