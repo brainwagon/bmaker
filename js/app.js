@@ -484,6 +484,8 @@ export async function initApp() {
         printSheet.appendChild(clone);
       }
       window.print();
+      window.addEventListener(
+          'afterprint', () => { printSheet.innerHTML = ''; }, {once: true});
     });
   }
 

@@ -188,6 +188,10 @@ select {
   width: 100%;
 }
 
+#print-sheet {
+  display: none;
+}
+
 /* Print Styles */
 @media print {
   body * {
