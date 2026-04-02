@@ -147,12 +147,16 @@ select {
   opacity: 0.6;
 }
 
-#business-card {
-  background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+#business-card,
+.print-card-clone {
   font-family: var(--body-font, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif);
   overflow: hidden;
   position: relative;
+}
+
+#business-card {
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,
     color 0.3s ease;
 }
@@ -259,9 +263,12 @@ select {
 }
 
 /* Reset all browser defaults inside the card so format files have full control.
-   line-height reads from the --card-line-height custom property set by the
-   renderer when a LineHeight metadata value is present; falls back to 1. */
-#business-card * {
+   Both selectors are needed: #business-card for the live preview and
+   .print-card-clone for each copy on the print sheet. line-height reads the
+   --card-line-height custom property (set as an inline style by the renderer
+   and copied onto every clone); falls back to 1. */
+#business-card *,
+.print-card-clone * {
   box-sizing: border-box;
   line-height: var(--card-line-height, 1);
   margin: 0;
