@@ -9,20 +9,28 @@
 - **Border**: "none"
 - **LineHeight**: "1.2"
 
-## Segment: Company
-- **Height**: "60%"
+## Segment: Spacer
+- **Height**: "40%"
 - **Columns**: "1"
-- **Padding**: "10px"
+
+### Column 1
+- **Width**: "100%"
+- **Alignment**: "left"
+- **Items**:
+  - **VPad**:
+
+## Segment: Company
+- **Height**: "20%"
+- **Columns**: "1"
+- **Padding**: "0px 10px"
 
 ### Column 1
 - **Width**: "100%"
 - **Alignment**: "center"
 - **Items**:
-  - **VPad**:
   - **Field**: Company
     - **Size**: "14pt"
     - **Style**: "bold"
-  - **VPad**:
 
 ## Segment: Contact
 - **Height**: "40%"
