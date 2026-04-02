@@ -72,6 +72,13 @@ export const FONT_PAIRS = {
     bodyFont: "'Work Sans', sans-serif",
     googleFontsUrl: 'https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Work+Sans:wght@400&display=swap',
   },
+  'spectral_inter': {
+    id: 'spectral_inter',
+    name: 'Spectral SC + Inter',
+    headingFont: "'Spectral SC', serif",
+    bodyFont: "'Inter', sans-serif",
+    googleFontsUrl: 'https://fonts.googleapis.com/css2?family=Spectral+SC:wght@700&family=Inter:wght@400&display=swap',
+  },
 };
 
 /**

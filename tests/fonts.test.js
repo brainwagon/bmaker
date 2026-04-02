@@ -5,8 +5,8 @@ import {describe, it, expect, beforeEach, afterEach, vi} from 'vitest';
 import {FONT_PAIRS, injectGoogleFonts} from '../js/fonts.js';
 
 describe('Font Pairs Data', () => {
-  it('should contain 10 font pairs', () => {
-    expect(Object.keys(FONT_PAIRS).length).toBe(10);
+  it('should contain 11 font pairs', () => {
+    expect(Object.keys(FONT_PAIRS).length).toBe(11);
   });
 
   it('should have the correct structure for each pair', () => {
