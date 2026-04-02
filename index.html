@@ -18,10 +18,30 @@
         <h2>Card Editor</h2>
 
         <div class="control-group">
-          <h3>Orientation</h3>
-          <div class="btn-group">
-            <button id="btn-landscape" class="active">Landscape</button>
-            <button id="btn-portrait">Portrait</button>
+          <h3>Contact Information</h3>
+          <div class="input-group">
+            <label for="input-name">Full Name</label>
+            <input type="text" id="input-name" placeholder="e.g. John Doe" value="John Doe">
+          </div>
+          <div class="input-group">
+            <label for="input-title">Professional Title</label>
+            <input type="text" id="input-title" placeholder="e.g. Senior Consultant" value="Professional Title">
+          </div>
+          <div class="input-group">
+            <label for="input-company">Company Name</label>
+            <input type="text" id="input-company" placeholder="e.g. Acme Corp (Optional)">
+          </div>
+          <div class="input-group">
+            <label for="input-email">Email Address</label>
+            <input type="email" id="input-email" placeholder="e.g. john@example.com">
+          </div>
+          <div class="input-group">
+            <label for="input-phone">Phone Number</label>
+            <input type="tel" id="input-phone" placeholder="e.g. +1 (555) 000-0000">
+          </div>
+          <div class="input-group">
+            <label for="input-website">Website / Portfolio</label>
+            <input type="url" id="input-website" placeholder="e.g. www.johndoe.com">
           </div>
         </div>
 
@@ -58,39 +78,19 @@
         </div>
 
         <div class="control-group">
-          <h3>Contact Information</h3>
-          <div class="input-group">
-            <label for="input-name">Full Name</label>
-            <input type="text" id="input-name" placeholder="e.g. John Doe" value="John Doe">
-          </div>
-          <div class="input-group">
-            <label for="input-title">Professional Title</label>
-            <input type="text" id="input-title" placeholder="e.g. Senior Consultant" value="Professional Title">
-          </div>
-          <div class="input-group">
-            <label for="input-company">Company Name</label>
-            <input type="text" id="input-company" placeholder="e.g. Acme Corp (Optional)">
-          </div>
-          <div class="input-group">
-            <label for="input-email">Email Address</label>
-            <input type="email" id="input-email" placeholder="e.g. john@example.com">
-          </div>
-          <div class="input-group">
-            <label for="input-phone">Phone Number</label>
-            <input type="tel" id="input-phone" placeholder="e.g. +1 (555) 000-0000">
-          </div>
-          <div class="input-group">
-            <label for="input-website">Website / Portfolio</label>
-            <input type="url" id="input-website" placeholder="e.g. www.johndoe.com">
-          </div>
-        </div>
-
-        <div class="control-group">
           <h3>Export</h3>
           <div class="btn-group">
             <button id="btn-export-png">Export PNG</button>
             <button id="btn-export-pdf">Export PDF</button>
             <button id="btn-print">Print</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>Orientation</h3>
+          <div class="btn-group">
+            <button id="btn-landscape" class="active">Landscape</button>
+            <button id="btn-portrait">Portrait</button>
           </div>
         </div>
       </section>
