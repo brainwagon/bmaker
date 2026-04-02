@@ -31,10 +31,10 @@ describe('UI: Font Dropdown', () => {
     expect(firstOption.textContent).toBe('Default System Fonts');
   });
 
-  it('should contain 10 professional font pairs', () => {
+  it('should contain 11 professional font pairs', () => {
     const fontSelect = document.getElementById('font-select');
-    // total options = 1 (default) + 10 (pairs) = 11
-    expect(fontSelect.options.length).toBe(11);
+    // total options = 1 (default) + 11 (pairs) = 12
+    expect(fontSelect.options.length).toBe(12);
   });
 
   it('should have Montserrat + Merriweather as one of the options', () => {

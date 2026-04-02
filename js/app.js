@@ -287,7 +287,14 @@ export async function initApp() {
       currentFormatModified = res.headers.get('Last-Modified');
       currentFormat = parseFormat(text);
       renderApp(currentFormat, collectData());
-      await loadAndApplyFont(currentFormat.metadata.fontPair);
+      
+      const selectedFont = fontSelect?.value || 'default';
+      if (selectedFont !== 'default') {
+        await loadAndApplyFont(selectedFont);
+      } else {
+        await loadAndApplyFont(currentFormat.metadata.fontPair);
+      }
+      
       runLayoutEngine(true);
       startFormatWatcher(filename);
     } catch (err) {
