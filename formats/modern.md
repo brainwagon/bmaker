@@ -19,11 +19,11 @@
 - **Alignment**: "center"
 - **Items**:
   - **VPad**:
-  - **Field**: Company
-    - **Size**: "12pt"
   - **Field**: Name
-    - **Size**: "10pt"
+    - **Size**: "12pt"
     - **Style**: "bold"
+  - **Field**: Company
+    - **Size**: "10pt"
   - **Field**: Title
     - **Size**: "10pt"
   - **VPad**:
