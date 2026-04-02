@@ -43,4 +43,31 @@ describe('Informal Theme Foundation', () => {
     expect(css).toContain('--color-cardboard: #8b5a2b;');
     expect(css).toContain('--color-pen-black: #1a1a1a;');
   });
+
+  it('should have texture classes defined in style.css', () => {
+    expect(css).toContain('.texture-paper');
+    expect(css).toContain('.texture-craft');
+    expect(css).toContain('.texture-cardboard');
+    expect(css).toContain('.texture-felt');
+  });
+
+  it('should have 3D paper layer classes defined in style.css', () => {
+    expect(css).toContain('.paper-stack');
+    expect(css).toContain('.paper-layer');
+    expect(css).toContain('.paper-layer::before');
+  });
+
+  it('should have texture and paper layer classes applied to elements in index.html', () => {
+    const body = document.querySelector('body');
+    const app = document.getElementById('app');
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+
+    expect(body.classList.contains('texture-paper')).toBe(true);
+    expect(app.classList.contains('paper-stack')).toBe(true);
+    expect(editor.classList.contains('texture-craft')).toBe(true);
+    expect(editor.classList.contains('paper-layer')).toBe(true);
+    expect(preview.classList.contains('texture-cardboard')).toBe(true);
+    expect(preview.classList.contains('paper-layer')).toBe(true);
+  });
 });
