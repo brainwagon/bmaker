@@ -69,7 +69,7 @@ describe('Phone Number Persistence', () => {
     const input = document.getElementById('input-phone');
     const display = document.getElementById('card-phone-display');
 
-    expect(input.value).toBe('(555) 123-4567');
-    expect(display.textContent).toBe('(555) 123-4567');
+    expect(input.value).toBe('+1 555-123-4567');
+    expect(display.textContent).toBe('+1 555-123-4567');
   });
 });

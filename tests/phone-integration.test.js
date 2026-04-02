@@ -45,7 +45,7 @@ describe('Phone Number UI Integration', () => {
     input.value = '5551234567';
     input.dispatchEvent(new dom.window.Event('input'));
 
-    expect(input.value).toBe('(555) 123-4567');
+    expect(input.value).toBe('+1 555-123-4567');
   });
 
   it('should update the card preview with the formatted phone number', () => {
@@ -55,7 +55,7 @@ describe('Phone Number UI Integration', () => {
     input.value = '5551234567';
     input.dispatchEvent(new dom.window.Event('input'));
 
-    expect(display.textContent).toBe('(555) 123-4567');
+    expect(display.textContent).toBe('+1 555-123-4567');
   });
 
   it('should handle partial input correctly in the UI', () => {
@@ -64,6 +64,6 @@ describe('Phone Number UI Integration', () => {
     input.value = '5551';
     input.dispatchEvent(new dom.window.Event('input'));
 
-    expect(input.value).toBe('(555) 1');
+    expect(input.value).toBe('+1 555-1');
   });
 });
