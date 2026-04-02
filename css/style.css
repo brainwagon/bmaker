@@ -580,4 +580,24 @@ button.btn-danger:hover {
   #app {
     grid-template-columns: 1fr;
   }
+
+  /* Remove rotations on mobile to prevent overflow/awkward spacing */
+  #editor.paper-layer,
+  #preview.paper-layer {
+    transform: none;
+  }
+
+  #editor.paper-layer:hover,
+  #preview.paper-layer:hover {
+    transform: scale(1.01);
+  }
+
+  /* Adjust tape for narrower screens */
+  .tape {
+    width: 80px;
+  }
+
+  #preview {
+    margin-top: 20px;
+  }
 }
