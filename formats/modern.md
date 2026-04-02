@@ -34,7 +34,7 @@
 - **Items**:
   - **VPad**:
   - **Logo**:
-    - **Size**: "50px"
+    - **Size**: "50pt"
   - **VPad**:
 
 ## Segment: Contact
