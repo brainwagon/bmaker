@@ -73,6 +73,12 @@ export async function initApp() {
   const fontSelect = document.getElementById('font-select');
   const inputWebsite = document.getElementById('input-website');
   const inputLogo = document.getElementById('input-logo');
+  const btnLogoUpload = document.getElementById('btn-logo-upload');
+  const btnLogoRemove = document.getElementById('btn-logo-remove');
+  const logoPreviewArea = document.getElementById('logo-preview-area');
+  const logoPreviewImg = document.getElementById('logo-preview-img');
+  const logoPreviewPlaceholder =
+      document.getElementById('logo-preview-placeholder');
 
   /** Currently active parsed format object. */
   let currentFormat = null;
@@ -209,6 +215,7 @@ export async function initApp() {
       currentFormat = parseFormat(text);
       renderCard(businessCard, currentFormat, collectData());
       updateQRCode();
+      updateLogoPreview();
       await loadAndApplyFont(currentFormat.metadata.fontPair);
       runLayoutEngine(true);
       startFormatWatcher(filename);
@@ -252,6 +259,7 @@ export async function initApp() {
         currentFormat = parseFormat(text);
         renderCard(businessCard, currentFormat, collectData());
         updateQRCode();
+        updateLogoPreview();
         runLayoutEngine(true);
       } catch (err) {
         console.warn(`Format watcher error for "${filename}":`, err);
@@ -381,6 +389,51 @@ export async function initApp() {
   // Logo upload
   // ------------------------------------------------------------------
 
+  /**
+   * Syncs the logo preview area to match the current logo state and format.
+   * Reads the logo size from the current format's Logo item, if present.
+   */
+  const updateLogoPreview = () => {
+    if (!logoPreviewArea) return;
+    const logoItem = currentFormat?.items?.find((i) => i.field === 'Logo');
+    const size = logoItem?.size || '60px';
+    logoPreviewArea.style.width = size;
+    logoPreviewArea.style.height = size;
+    if (currentLogoSrc) {
+      if (logoPreviewImg) {
+        logoPreviewImg.src = currentLogoSrc;
+        logoPreviewImg.hidden = false;
+      }
+      if (logoPreviewPlaceholder) logoPreviewPlaceholder.hidden = true;
+      if (btnLogoRemove) btnLogoRemove.hidden = false;
+    } else {
+      if (logoPreviewImg) {
+        logoPreviewImg.src = '';
+        logoPreviewImg.hidden = true;
+      }
+      if (logoPreviewPlaceholder) logoPreviewPlaceholder.hidden = false;
+      if (btnLogoRemove) btnLogoRemove.hidden = true;
+    }
+  };
+
+  if (btnLogoUpload) {
+    btnLogoUpload.addEventListener('click', () => inputLogo?.click());
+  }
+
+  if (btnLogoRemove) {
+    btnLogoRemove.addEventListener('click', () => {
+      currentLogoSrc = '';
+      if (inputLogo) inputLogo.value = '';
+      updateLogoPreview();
+      if (businessCard && currentFormat) {
+        renderCard(businessCard, currentFormat, collectData());
+        updateQRCode();
+      }
+      runLayoutEngine(true);
+      saveToLocalStorage(true);
+    });
+  }
+
   if (inputLogo) {
     inputLogo.addEventListener('change', (e) => {
       const file = e.target.files[0];
@@ -388,6 +441,7 @@ export async function initApp() {
         const reader = new FileReader();
         reader.onload = (event) => {
           currentLogoSrc = event.target.result;
+          updateLogoPreview();
           if (businessCard && currentFormat) {
             renderCard(businessCard, currentFormat, collectData());
             updateQRCode();
@@ -567,6 +621,7 @@ export async function initApp() {
   if (businessCard) {
     renderCard(businessCard, FALLBACK_FORMAT, collectData());
   }
+  updateLogoPreview();
 
   // 3. Populate format selector from manifest (async)
   await loadFormats();

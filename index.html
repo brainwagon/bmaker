@@ -71,9 +71,19 @@
 
         <div class="control-group">
           <h3>Branding</h3>
-          <div class="input-group">
-            <label for="input-logo">Upload Logo</label>
-            <input type="file" id="input-logo" accept="image/*">
+          <div class="logo-uploader">
+            <div class="logo-preview-area" id="logo-preview-area">
+              <img id="logo-preview-img" class="logo-preview-img"
+                  src="" alt="Logo" hidden>
+              <span class="logo-preview-placeholder"
+                  id="logo-preview-placeholder">No Logo</span>
+            </div>
+            <div class="logo-uploader-actions">
+              <button type="button" id="btn-logo-upload">Upload</button>
+              <button type="button" id="btn-logo-remove"
+                  class="btn-danger" hidden>Remove</button>
+            </div>
+            <input type="file" id="input-logo" accept="image/*" hidden>
           </div>
         </div>
 

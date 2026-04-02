@@ -93,6 +93,65 @@ select {
   margin-bottom: 15px;
 }
 
+.logo-uploader {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.logo-preview-area {
+  align-items: center;
+  background: var(--bg-color);
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+  display: flex;
+  flex-shrink: 0;
+  height: 60px;
+  justify-content: center;
+  overflow: hidden;
+  transition: border-color 0.2s;
+  width: 60px;
+}
+
+.logo-preview-area:hover {
+  border-color: var(--accent-color);
+}
+
+.logo-preview-img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.logo-preview-placeholder {
+  color: #aaa;
+  font-size: 0.7rem;
+  text-align: center;
+  user-select: none;
+}
+
+.logo-uploader-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.logo-uploader-actions button {
+  font-size: 0.8rem;
+  padding: 6px 12px;
+}
+
+button.btn-danger {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+button.btn-danger:hover {
+  background: #e74c3c;
+  border-color: #e74c3c;
+  color: #fff;
+}
+
 .input-group label {
   color: #666;
   display: block;
