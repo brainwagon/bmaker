@@ -6,12 +6,12 @@
 - [x] Task: TDD - Write tests to verify new CSS variables and font application f27b3cf
 - [x] Task: Conductor - User Manual Verification 'Phase 1: Foundation & Typography' (Protocol in workflow.md) a13d030
 
-## Phase 2: Textured Backgrounds & Layers
-- [ ] Task: Sourcing or creating CSS-based textures for craft paper, cardboard, and felt
-- [ ] Task: Update UI layout (Editor and Preview panels) with textured backgrounds
-- [ ] Task: Implement "3D Paper Layers" using drop shadows and offsets
-- [ ] Task: TDD - Write tests to verify visual styles and layout integrity
-- [ ] Task: Conductor - User Manual Verification 'Phase 2: Textured Backgrounds & Layers' (Protocol in workflow.md)
+## Phase 2: Textured Backgrounds & Layers [checkpoint: 1af2eb5]
+- [x] Task: Sourcing or creating CSS-based textures for craft paper, cardboard, and felt 52f990a
+- [x] Task: Update UI layout (Editor and Preview panels) with textured backgrounds 5d60452
+- [x] Task: Implement "3D Paper Layers" using drop shadows and offsets 8c08603
+- [x] Task: TDD - Write tests to verify visual styles and layout integrity d682bcb
+- [x] Task: Conductor - User Manual Verification 'Phase 2: Textured Backgrounds & Layers' (Protocol in workflow.md) 1af2eb5
 
 ## Phase 3: Whimsical Components & Icons
 - [ ] Task: Implement "Organic Shapes" (irregular border-radii) for buttons and inputs
